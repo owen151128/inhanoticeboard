@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="shortcut icon" href="/img/favicons.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/favicons.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/favicons.png">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          crossorigin="anonymous"></script>
+  <title>인프 과제 게시판</title>
+</head>
+<body class="bg-dark">
+
+<div class="container">
+  <header class="blog-header py-3" th:insert="/common/header.html"></header>
+
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 text-muted" href="/board/list.do">과제 게시판</a>
+      <a class="p-2 text-muted" href="#">프로그래밍 게시판</a>
+      <a class="p-2 text-muted" href="#">OS / 시스템 게시판</a>
+      <a class="p-2 text-muted" href="#">디자인 게시판</a>
+      <a class="p-2 text-muted" href="#">객체 지향 패턴 게시판</a>
+      <a class="p-2 text-muted" href="#">알고리즘 게시판</a>
+      <a class="p-2 text-muted" href="#">자료구조 게시판</a>
+      <a class="p-2 text-muted" href="#">머신러닝 게시판</a>
+      <a class="p-2 text-muted" href="#">컴퓨터 보안 게시판</a>
+      <a class="p-2 text-muted" href="#">마이 페이지</a>
+    </nav>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2 text-primary">가장 많은 조회수를 기록한 글</strong>
+          <h3 class="mb-0">
+            <a class="text-dark" href="#">타이틀</a>
+          </h3>
+          <p class="card-text mb-auto">내용 어쩌구 저쩌구 시발</p>
+          <a href="#">계속 읽기</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2 text-success">가장 많은 추천을 받은 글</strong>
+          <h3 class="mb-0">
+            <a class="text-dark" href="#">타이틀</a>
+          </h3>
+          <p class="card-text mb-auto">내용 어쩌구 저쩌구 시발</p>
+          <a href="#">계속 읽기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="position-relative overflow-hidden text-center bg-light" id="home-main">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+    <h1 class="display-4 font-weight-normal">추가된 기능 및 특장점</h1>
+    <ul>
+      <li>asdf</li>
+      <li>asdf</li>
+      <li>asdf</li>
+      <li>asdf</li>
+      <li>asdf</li>
+      <li>asdf</li>
+      <li>asdf</li>
+      <li>asdf</li>
+    </ul>
+    <p class="lead font-weight-normal">차상진 교수님 1학기 동안 고생 많으셨습니다.<br/>
+      안드로이드 프로그래밍 수업때 뵙겠습니다.
+    </p>
+    <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+  </div>
+  <div class="product-device box-shadow d-none d-md-block"></div>
+  <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
+<footer th:insert="/common/footer.html" id="footer"></footer>
+</body>
+</html>

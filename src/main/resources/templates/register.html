@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/register.css">
+  <link rel="shortcut icon" href="/img/favicons.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/favicons.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/favicons.png">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          crossorigin="anonymous"></script>
+  <title>회원가입</title>
+</head>
+<body class="bg-dark">
+<div class="container" id="content">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4"
+         src="/img/main_icon.png" alt=""
+         width="100" height="100">
+    <h2>회원가입</h2>
+    <p class="lead">인프 과제 게시판 회원가입 페이지 입니다.
+      <br/>
+      글을 읽거나 쓰시려면 회원가입이 필요합니다.
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">포인트 적립</span>
+        <span class="badge badge-secondary badge-pill">3</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Product name</h6>
+            <small class="text-muted">신규 가입 포인트</small>
+          </div>
+          <span class="text-muted">100pt</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">댓글 포인트</h6>
+            <small class="text-muted">댓글 포인트</small>
+          </div>
+          <span class="text-muted">50pt</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">수정 포인트</h6>
+            <small class="text-muted">수정 포인트</small>
+          </div>
+          <span class="text-muted">20pt</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between bg-light">
+          <div class="text-success">
+            <h6 class="my-0">총합 포인트</h6>
+            <small>단위 : pt</small>
+          </div>
+          <span class="text-success">170pt</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Total (USD)</span>
+          <strong>$20</strong>
+        </li>
+      </ul>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="추천인 입력">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-secondary">적용</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">회원 정보</h4>
+      <form class="register" action="/auth/register_proc.do" method="POST">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <div class="mb-3">
+          <label for="id">이메일(아이디) <span class="text-muted">(필수 항목, 최대 길이 : 20자)</span></label>
+          <input type="email" class="form-control" name="UId" id="id"
+                 placeholder="example@gmail.com"
+                 required>
+          <div class="invalid-feedback">
+            Please enter a valid email address.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password">비밀번호</label>
+          <input type="password" class="form-control" placeholder="비밀번호" name="password"
+                 id="password" required>
+          <div class="invalid-feedback">
+            Please enter your password.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password2">비밀번호 확인</label>
+          <input type="password" class="form-control"
+                 placeholder="비밀번호를 한번 더 입력하세요." id="password2" required>
+          <div class="invalid-feedback">
+            Please enter your password.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="nickName">닉네임 <span class="text-muted">(필수 항목, 최대 길이 : 20자)</span></label>
+          <input type="text" class="form-control" name="nickName" id="nickName" placeholder=""
+                 required>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">회원가입</button>
+      </form>
+    </div>
+  </div>
+</div>
+<footer>
+  <hr/>
+  <div id="copyright">
+    Copyright 2019. <a href="https://github.com/owen151128" id="copyright-name">owen151128</a> All
+    Rights Reserved.
+  </div>
+</footer>
+</body>
+</html>

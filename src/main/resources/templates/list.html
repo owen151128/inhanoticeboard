@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/list.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="shortcut icon" href="/img/favicons.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/favicons.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/favicons.png">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          crossorigin="anonymous"></script>
+  <title>인프 과제 게시판</title>
+</head>
+<body class="bg-dark">
+<header class="blog-header py-3" th:insert="/common/header.html"></header>
+<div class="wrap">
+
+  <ul class="board_search">
+    <li><input type="radio" name="searchtype" id="search01" checked="checked"/><label
+        for="search01">이름</label></li>
+    <li><input type="radio" name="searchtype" id="search02"/><label for="search02">제목</label></li>
+    <li><input type="radio" name="searchtype" id="search03"/><label for="search03">내용</label></li>
+    <li><input type="text" title="검색어를 입력하세요"/><input type="submit" value="검색"/></li>
+  </ul>
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="공지사항을 나타낸 표"
+         class="board_list">
+    <caption>공지사항</caption>
+    <colgroup>
+      <col style="width:8%"/>
+      <col style="width:68%"/>
+      <col style="width:12%"/>
+      <col style="width:12%"/>
+    </colgroup>
+    <thead>
+    <tr class="notice">
+      <th scope="col" class="notice">번호</th>
+      <th scope="col">제목</th>
+      <th scope="col">작성자</th>
+      <th scope="col">조회수</th>
+      <th scope="col">작성일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="board : ${boardList}" class="article">
+      <td><span th:text="${board.id}"></span></td>
+      <td><a th:href="@{'/board/article.do?id=' + ${board.id}}">
+        <span th:text="${board.title}"></span></a></td>
+      <td><span th:text="${board.nickName}"></span></td>
+      <td><span th:text="${board.viewCount}"></span></td>
+      <td><span th:text="${board.regDate}"></span></td>
+    </tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 10px">
+    <a href="/board/insert.do" class="buttons">글쓰기</a>
+  </div>
+
+  <div class="page_navi">
+    <a href="#" class="first">처음</a>
+    <a href="#" class="prev">이전</a>
+    <span>
+			<strong>1</strong>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			<a href="#">5</a>
+			<a href="#">6</a>
+		</span>
+    <a href="#" class="next">다음</a>
+    <a href="#" class="last">마지막</a>
+  </div>
+
+</div>
+
+<footer th:insert="/common/footer.html" id="footer"></footer>
+</body>
+</html>

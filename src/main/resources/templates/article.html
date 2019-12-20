@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/insert.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="shortcut icon" href="/img/favicons.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/favicons.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/favicons.png">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          crossorigin="anonymous"></script>
+  <title>인프 과제 게시판</title>
+</head>
+<body class="bg-dark">
+<header class="blog-header py-3" th:insert="/common/header.html"></header>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h2 class="text-center">게시글 보기</h2>
+    <p></p>
+    <div class="table table-responsive">
+      <table class="table table-striped">
+        <tr>
+          <td>제목</td>
+          <td>
+            <div th:text="${title}"></div>
+        </tr>
+        <tr>
+          <td>내용</td>
+          <td>
+            <div th:text="${content}"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>작성자</td>
+          <td>
+            <div th:text="${nickName}"></div>
+        </tr>
+        <tr>
+          <td>작성일</td>
+          <td>
+            <div th:text="${regDate}"></div>
+        </tr>
+        <tr>
+          <td>조회수</td>
+          <td>
+            <div th:text="${viewCount}"></div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-center">
+            <input th:if="${own == true}" type="button" value="게시글 수정" class="btn btn-info"
+                   th:onclick="'window.location.href=\'/board/update.do?id=' + ${id} + '\''">
+            <input th:if="${own == true}" type="button" value="삭제" class="btn btn-danger"
+                   th:onclick="'window.location.href=\'/board/delete.do?id=' + ${id} + '\''">
+            <input type="button" class="btn btn-primary"
+                   onclick="location.href='/board/list.do'"
+                   value="목록으로 돌아가기">
+          </td>
+        </tr>
+
+      </table>
+
+
+    </div>
+  </div>
+</div>
+<footer th:insert="/common/footer.html" id="footer"></footer>
+</body>
+</html>
