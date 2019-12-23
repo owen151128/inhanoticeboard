@@ -9,6 +9,11 @@ import kr.owens.inhanoticeboard.entity.MemberEntity;
 import kr.owens.inhanoticeboard.service.BoardService;
 import kr.owens.inhanoticeboard.service.MemberService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -26,9 +31,9 @@ public class BoardController {
   private final BoardService boardService;
 
   @RequestMapping("/board/list.do")
-  public String responseListRequest(Model model) {
-    List<BoardEntity> boardList = boardService.findAll();
-    Collections.reverse(boardList);
+  public String responseListRequest(@PageableDefault Pageable pageable,  Model model) {
+    Page<BoardEntity> boardList = boardService.getBoardList(pageable);
+//    Collections.reverse(boardList);
     model.addAttribute("boardList", boardList);
 
     return "list";

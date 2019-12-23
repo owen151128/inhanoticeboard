@@ -192,3 +192,12 @@ label {
   line-height: 23px;
   border: solid 1px #ccc
 }
+
+li {
+  color:#ffffff !important;
+}
+
+a {
+  color:#ffffff !important;
+  margin-right: 20px;
+}

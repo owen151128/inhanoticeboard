@@ -69,22 +69,49 @@
   <div style="margin-top: 10px">
     <a href="/board/insert.do" class="buttons">글쓰기</a>
   </div>
+  <script>
+  $('.pagination').find('a').each(function(){
+    $(this).attr('href', '/board/list.do?page=' + $(this).text());
+  });
+ </script>
 
-  <div class="page_navi">
-    <a href="#" class="first">처음</a>
-    <a href="#" class="prev">이전</a>
-    <span>
-			<strong>1</strong>
-			<a href="#">2</a>
-			<a href="#">3</a>
-			<a href="#">4</a>
-			<a href="#">5</a>
-			<a href="#">6</a>
-		</span>
-    <a href="#" class="next">다음</a>
-    <a href="#" class="last">마지막</a>
-  </div>
+<table style="margin: 0 25% ">
+  <tr>
+    <td>
+  <ul class="pagination"
+        th:with="start=${T(Math).floor(boardList.number/10)*10 + 1},
+                    last=(${start + 9 < boardList.totalPages ? start + 9 : boardList.totalPages})">
+      <li>
+        <a th:href="'/board/list.do?id=1'" aria-label="First">
+          <span aria-hidden="true">First</span>
+        </a>
+      </li>
 
+      <li th:class="${boardList.first} ? 'disabled'">
+        <a th:href="${boardList.first} ? '#' :@{(page=${boardList.number})}" aria-label="Previous">
+          <span aria-hidden="true">&lt;</span>
+        </a>
+      </li>
+
+      <li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == boardList.number + 1} ? 'active'">
+        <a th:text="${page}" th:href="@{/board/list.do(page=${page})}"></a>
+      </li>
+
+      <li th:class="${boardList.last} ? 'disabled'">
+        <a th:href="${boardList.last} ? '#' : @{/board/list.do(page=${boardList.number + 2})}" aria-label="Next">
+          <span aria-hidden="true">&gt;</span>
+        </a>
+      </li>
+
+      <li>
+        <a th:href="@{/board/list.do(page=${boardList.totalPages})}" aria-label="Last">
+          <span aria-hidden="true">Last</span>
+        </a>
+      </li>
+</ul>
+</td>
+</tr>
+  </table>
 </div>
 
 <footer th:insert="/common/footer.html" id="footer"></footer>
